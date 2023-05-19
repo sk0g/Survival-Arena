@@ -3,7 +3,7 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
     [Export]
-    float _movementSpeed = 10_000f;
+    float _movementSpeed = 90;
 
     public override void _Ready() { }
 
@@ -12,7 +12,7 @@ public partial class Player : CharacterBody2D
         var input = GetMovementInput()
             .Normalized();
 
-        Velocity = input * _movementSpeed * (float) delta;
+        Velocity = input * _movementSpeed;
         MoveAndSlide();
     }
 

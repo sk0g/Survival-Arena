@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://p1maqr7xmmoc"]
+
+[ext_resource type="Texture2D" uid="uid://dxqh1x6vjpibj" path="res://Imports/Tiles/tile_0120.png" id="1_bwn4s"]
+[ext_resource type="Script" path="res://Scenes/BasicEnemy/BasicEnemy.cs" id="1_l6yox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ygr8"]
+radius = 8.0
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+script = ExtResource("1_l6yox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_bwn4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_0ygr8")
