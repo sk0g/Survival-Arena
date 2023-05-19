@@ -1,7 +1,7 @@
 ﻿.idea
+.godot
 
 *.png
 *.tscn
 *.svg
 *.import
-*.godot
