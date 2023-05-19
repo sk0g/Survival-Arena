@@ -2,17 +2,18 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
-    // Called when the node enters the scene tree for the first time.
+    [Export]
+    float _movementSpeed = 50f;
+
     public override void _Ready() { }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
         var input = GetMovementInput()
             .Normalized();
 
-        MoveLocalX(input.X * (float) delta);
-        MoveLocalY(input.Y * (float) delta);
+        MoveLocalX(input.X * _movementSpeed * (float) delta);
+        MoveLocalY(input.Y * _movementSpeed * (float) delta);
     }
 
     /// NOT NORMALISED
