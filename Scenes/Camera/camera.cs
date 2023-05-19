@@ -31,7 +31,7 @@ public partial class Camera : Camera2D
             .GetFirstNodeInGroup("player");
 
         if (foundNode is Player player) { _player = player; }
-        else { GD.PrintErr("Camera could not find player"); }
+        else { GD.PrintErr("E001: Camera could not find player"); }
     }
 
     float SmoothLerpValue(double delta) => 1f - Mathf.Exp((float) delta * _cameraSmoothing);
