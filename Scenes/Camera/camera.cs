@@ -2,7 +2,11 @@ using Godot;
 
 public partial class Camera : Camera2D
 {
+    [Export(PropertyHint.Range, "-20,-1")]
+    float _cameraSmoothing = -5f;
+
     Player _player;
+    Vector2 _targetPosition = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -18,7 +22,7 @@ public partial class Camera : Camera2D
             return;
         }
 
-        GlobalPosition = _player.GlobalPosition;
+        GlobalPosition = GlobalPosition.Lerp(_player.GlobalPosition, SmoothLerpValue(delta));
     }
 
     void FindAndSetPlayer()
@@ -29,4 +33,6 @@ public partial class Camera : Camera2D
         if (foundNode is Player player) { _player = player; }
         else { GD.PrintErr("Camera could not find player"); }
     }
+
+    float SmoothLerpValue(double delta) => 1f - Mathf.Exp((float) delta * _cameraSmoothing);
 }
