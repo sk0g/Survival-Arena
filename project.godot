@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="2D Survivors"
-run/main_scene="res://Scenes/Player/Player.tscn"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.0", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=960
+window/stretch/scale=4.0
+window/vsync/vsync_mode=2
 
 [dotnet]
 

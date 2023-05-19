@@ -3,7 +3,7 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
     [Export]
-    float _movementSpeed = 50f;
+    float _movementSpeed = 10_000f;
 
     public override void _Ready() { }
 
@@ -12,11 +12,11 @@ public partial class Player : CharacterBody2D
         var input = GetMovementInput()
             .Normalized();
 
-        MoveLocalX(input.X * _movementSpeed * (float) delta);
-        MoveLocalY(input.Y * _movementSpeed * (float) delta);
+        Velocity = input * _movementSpeed * (float) delta;
+        MoveAndSlide();
     }
 
     /// NOT NORMALISED
     Vector2 GetMovementInput() =>
-        new(Input.GetAxis("MoveLeft", "MoveRight"), Input.GetAxis("MoveDown", "MoveUp"));
+        new(Input.GetAxis("MoveLeft", "MoveRight"), Input.GetAxis("MoveUp", "MoveDown"));
 }
