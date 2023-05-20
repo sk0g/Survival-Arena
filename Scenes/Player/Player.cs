@@ -9,8 +9,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        var input = GetMovementInput()
-            .Normalized();
+        var input = GetMovementInput().Normalized();
 
         Velocity = input * _movementSpeed;
         MoveAndSlide();

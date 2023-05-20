@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class BasicEnemy : CharacterBody2D
@@ -13,15 +14,12 @@ public partial class BasicEnemy : CharacterBody2D
         MoveAndSlide();
     }
 
-    /// Return normalised direction to player, or zero if player not found
+    /// Return normalised direction to player, or throw an exception otherwise
     Vector2 GetDirectionToPlayer()
     {
-        var playerNode = GetTree()
-            .GetFirstNodeInGroup("player");
+        var player = GetTree().GetFirstNodeInGroup("player") as Player
+         ?? throw new Exception("E002: BasicEnemy could not find player");
 
-        if (playerNode is Player player) { return (player.GlobalPosition - GlobalPosition).Normalized(); }
-
-        GD.PrintErr("E002: BasicEnemy could not find player");
-        return Vector2.Zero;
+        return (player.GlobalPosition - GlobalPosition).Normalized();
     }
 }

@@ -18,7 +18,7 @@ public partial class SwordAbilityController : Node
 
     void HandleAbilityTimer()
     {
-        var player = GetTree().GetFirstNodeInGroup("Player") as Player
+        var player = GetTree().GetFirstNodeInGroup("player") as Player
          ?? throw new Exception("E003: Ability did not find player");
 
         var swordInstance = _swordAbility.Instantiate() as Node2D
