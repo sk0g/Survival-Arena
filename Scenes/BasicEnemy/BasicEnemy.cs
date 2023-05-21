@@ -6,7 +6,16 @@ public partial class BasicEnemy : CharacterBody2D
     [Export]
     float _movementSpeed = 50;
 
-    public override void _Ready() { }
+    [Export]
+    // On spawn, will set movement speed to be _movementSpeed +/- this value
+    float _movementSpeedVariation = 5;
+
+    RandomNumberGenerator _rng = new();
+
+    public override void _Ready()
+    {
+        _movementSpeed += _rng.RandfRange(-_movementSpeedVariation, _movementSpeedVariation);
+    }
 
     public override void _Process(double delta)
     {
